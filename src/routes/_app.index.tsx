@@ -171,7 +171,7 @@ function HomePage() {
                   );
                 })}
               </div>
-              <Link to="/insights" className="mt-4 flex items-center justify-center gap-1 rounded-lg border border-border py-2 text-xs font-medium hover:bg-white/5">
+              <Link to="/insights" className="mt-4 flex items-center justify-center gap-1 rounded-lg border border-border py-2 text-xs font-medium hover:bg-foreground/5">
                 Open Briefing <ArrowRight className="size-3" />
               </Link>
             </div>

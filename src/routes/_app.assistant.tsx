@@ -78,10 +78,10 @@ function AssistantPage() {
                 </span>
               </div>
               <div className="flex items-center gap-2 text-xs text-muted-foreground">
-                <button className="inline-flex items-center gap-1 rounded-md border border-border px-2 py-1 hover:bg-white/5">
+                <button className="inline-flex items-center gap-1 rounded-md border border-border px-2 py-1 hover:bg-foreground/5">
                   <Bookmark className="size-3" /> Save
                 </button>
-                <button className="inline-flex items-center gap-1 rounded-md border border-border px-2 py-1 hover:bg-white/5">
+                <button className="inline-flex items-center gap-1 rounded-md border border-border px-2 py-1 hover:bg-foreground/5">
                   <Download className="size-3" /> Export
                 </button>
               </div>
@@ -152,7 +152,7 @@ function AssistantPage() {
             <h3 className="mb-3 text-xs font-semibold uppercase tracking-widest text-muted-foreground">Query History</h3>
             <ul className="space-y-2 text-xs">
               {["Cloud spend by service (Q3)", "Top 10 churn signals", "Deploy frequency vs. incidents", "Active users — weekly cohort"].map((q) => (
-                <li key={q} className="cursor-pointer truncate rounded px-2 py-1 hover:bg-white/5">{q}</li>
+                <li key={q} className="cursor-pointer truncate rounded px-2 py-1 hover:bg-foreground/5">{q}</li>
               ))}
             </ul>
           </div>
@@ -192,7 +192,7 @@ function AiMessage({ msg }: { msg: Extract<Msg, { role: "ai" }> }) {
         )}
         {msg.sql && (
           <div className="overflow-hidden rounded-xl border border-border bg-surface">
-            <button onClick={() => setShowSql((s) => !s)} className="flex w-full items-center justify-between px-4 py-2 text-xs hover:bg-white/5">
+            <button onClick={() => setShowSql((s) => !s)} className="flex w-full items-center justify-between px-4 py-2 text-xs hover:bg-foreground/5">
               <span className="inline-flex items-center gap-2 font-mono text-muted-foreground">
                 <Code2 className="size-3" /> generated_query.sql
               </span>

@@ -1,5 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { useState } from "react";
 import { TopBar } from "@/components/insiflow/TopBar";
+import { PermissionRequestModal } from "@/components/insiflow/PermissionRequestModal";
 import { accessRequests } from "@/lib/mock-data";
 import { CheckCircle2, Clock, XCircle, ShieldCheck, ArrowRight } from "lucide-react";
 
@@ -16,6 +18,7 @@ const statusMeta: Record<string, { icon: typeof CheckCircle2; cls: string }> = {
 };
 
 function AccessPage() {
+  const [open, setOpen] = useState(false);
   const counts = {
     pending: accessRequests.filter((r) => r.status.includes("Pending") || r.status.includes("Review")).length,
     approved: accessRequests.filter((r) => r.status === "Approved").length,
@@ -41,7 +44,10 @@ function AccessPage() {
         <div className="rounded-2xl border border-border bg-panel">
           <div className="flex items-center justify-between border-b border-border p-5">
             <h3 className="text-sm font-semibold">Active Requests</h3>
-            <button className="rounded-md bg-brand px-3 py-1.5 text-xs font-medium text-brand-foreground hover:opacity-90">
+            <button
+              onClick={() => setOpen(true)}
+              className="rounded-md bg-brand px-3 py-1.5 text-xs font-medium text-brand-foreground hover:opacity-90"
+            >
               New Request
             </button>
           </div>
@@ -50,7 +56,7 @@ function AccessPage() {
               const m = statusMeta[r.status];
               const Icon = m.icon;
               return (
-                <div key={r.id} className="grid grid-cols-12 items-center gap-4 p-5 transition hover:bg-white/5">
+                <div key={r.id} className="grid grid-cols-12 items-center gap-4 p-5 transition hover:bg-foreground/5">
                   <div className="col-span-12 md:col-span-4">
                     <div className="flex items-center gap-2 text-sm font-medium">{r.dataset}</div>
                     <div className="mt-1 text-[11px] text-muted-foreground">{r.id} · {r.submitted}</div>
@@ -112,6 +118,7 @@ function AccessPage() {
           </div>
         </div>
       </div>
+      <PermissionRequestModal open={open} onOpenChange={setOpen} dataset={null} />
     </>
   );
 }

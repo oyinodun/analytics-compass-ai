@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import { TopBar } from "@/components/insiflow/TopBar";
+import { PermissionRequestModal } from "@/components/insiflow/PermissionRequestModal";
 import { datasets } from "@/lib/mock-data";
 import { Search, Database, ShieldCheck, Clock, Tag, Sparkles } from "lucide-react";
 
@@ -18,9 +19,16 @@ const statusStyle: Record<string, string> = {
 
 function DatasetsPage() {
   const [q, setQ] = useState("");
+  const [modalOpen, setModalOpen] = useState(false);
+  const [active, setActive] = useState<(typeof datasets)[number] | null>(null);
   const filtered = datasets.filter(
     (d) => d.name.toLowerCase().includes(q.toLowerCase()) || d.tags.some((t) => t.includes(q.toLowerCase()))
   );
+
+  function requestAccess(d: (typeof datasets)[number]) {
+    setActive(d);
+    setModalOpen(true);
+  }
 
   return (
     <>
@@ -93,8 +101,11 @@ function DatasetsPage() {
                   <ShieldCheck className="size-3" /> {d.access}
                 </div>
                 <div className="flex gap-2">
-                  <button className="rounded-md border border-border px-2.5 py-1 text-[11px] hover:bg-white/5">Preview</button>
-                  <button className="rounded-md bg-brand px-2.5 py-1 text-[11px] font-medium text-brand-foreground hover:opacity-90">
+                  <button className="rounded-md border border-border px-2.5 py-1 text-[11px] hover:bg-foreground/5">Preview</button>
+                  <button
+                    onClick={() => requestAccess(d)}
+                    className="rounded-md bg-brand px-2.5 py-1 text-[11px] font-medium text-brand-foreground hover:opacity-90"
+                  >
                     Request Access
                   </button>
                 </div>
@@ -121,6 +132,7 @@ function DatasetsPage() {
           </div>
         </div>
       </div>
+      <PermissionRequestModal open={modalOpen} onOpenChange={setModalOpen} dataset={active} />
     </>
   );
 }

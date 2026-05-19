@@ -73,8 +73,8 @@ function InsightsPage() {
                 </div>
                 <p className="text-sm leading-relaxed">{it.text}</p>
                 <div className="mt-3 flex gap-2">
-                  <button className="rounded-md border border-border bg-surface/60 px-2 py-1 text-[10px] hover:bg-white/5">View evidence</button>
-                  <button className="rounded-md border border-border bg-surface/60 px-2 py-1 text-[10px] hover:bg-white/5">Acknowledge</button>
+                  <button className="rounded-md border border-border bg-surface/60 px-2 py-1 text-[10px] hover:bg-foreground/5">View evidence</button>
+                  <button className="rounded-md border border-border bg-surface/60 px-2 py-1 text-[10px] hover:bg-foreground/5">Acknowledge</button>
                 </div>
               </div>
             );
