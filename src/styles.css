@@ -42,6 +42,36 @@
 
 :root {
   --radius: 0.75rem;
+  /* InsiFlow AI — light mode (architectural) */
+  --surface: oklch(0.985 0.003 250);
+  --panel: oklch(1 0 0);
+  --background: oklch(0.985 0.003 250);
+  --foreground: oklch(0.2 0.02 265);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.2 0.02 265);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.2 0.02 265);
+  --primary: oklch(0.55 0.2 258);
+  --primary-foreground: oklch(0.99 0.005 250);
+  --secondary: oklch(0.94 0.01 260);
+  --secondary-foreground: oklch(0.25 0.02 265);
+  --muted: oklch(0.95 0.008 260);
+  --muted-foreground: oklch(0.5 0.02 260);
+  --accent: oklch(0.94 0.02 258);
+  --accent-foreground: oklch(0.25 0.02 265);
+  --destructive: oklch(0.6 0.22 25);
+  --destructive-foreground: oklch(0.99 0.005 250);
+  --border: oklch(0.9 0.008 260);
+  --input: oklch(0.93 0.01 260);
+  --ring: oklch(0.55 0.2 258);
+  --brand: oklch(0.55 0.2 258);
+  --brand-foreground: oklch(0.99 0.005 250);
+  --success: oklch(0.62 0.16 158);
+  --warning: oklch(0.7 0.16 75);
+  --danger: oklch(0.6 0.22 25);
+}
+
+.dark {
   /* InsiFlow AI — architectural dark mode */
   --surface: oklch(0.16 0.02 265);
   --panel: oklch(0.22 0.025 265);
