@@ -4,8 +4,9 @@ export function Sparkline({ seed = 1, className = "" }: { seed?: number; classNa
   const data = sparkline(seed, 28);
   const w = 200, h = 40;
   const step = w / (data.length - 1);
-  const path = data.map((v, i) => `${i === 0 ? "M" : "L"} ${i * step} ${h - (v / 100) * h}`).join(" ");
-  const area = `${path} L ${w} ${h} L 0 ${h} Z`;
+  const r = (n: number) => Math.round(n * 100) / 100;
+  const path = data.map((v, i) => `${i === 0 ? "M" : "L"} ${r(i * step)} ${r(h - (v / 100) * h)}`).join(" ");
+  const area = `${path} L ${r(w)} ${r(h)} L 0 ${r(h)} Z`;
   return (
     <svg viewBox={`0 0 ${w} ${h}`} preserveAspectRatio="none" className={"h-10 w-full " + className}>
       <defs>
