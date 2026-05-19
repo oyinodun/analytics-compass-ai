@@ -44,7 +44,10 @@ function AccessPage() {
         <div className="rounded-2xl border border-border bg-panel">
           <div className="flex items-center justify-between border-b border-border p-5">
             <h3 className="text-sm font-semibold">Active Requests</h3>
-            <button className="rounded-md bg-brand px-3 py-1.5 text-xs font-medium text-brand-foreground hover:opacity-90">
+            <button
+              onClick={() => setOpen(true)}
+              className="rounded-md bg-brand px-3 py-1.5 text-xs font-medium text-brand-foreground hover:opacity-90"
+            >
               New Request
             </button>
           </div>
