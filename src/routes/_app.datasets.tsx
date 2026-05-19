@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import { TopBar } from "@/components/insiflow/TopBar";
+import { PermissionRequestModal } from "@/components/insiflow/PermissionRequestModal";
 import { datasets } from "@/lib/mock-data";
 import { Search, Database, ShieldCheck, Clock, Tag, Sparkles } from "lucide-react";
 
