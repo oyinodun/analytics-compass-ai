@@ -102,7 +102,10 @@ function DatasetsPage() {
                 </div>
                 <div className="flex gap-2">
                   <button className="rounded-md border border-border px-2.5 py-1 text-[11px] hover:bg-foreground/5">Preview</button>
-                  <button className="rounded-md bg-brand px-2.5 py-1 text-[11px] font-medium text-brand-foreground hover:opacity-90">
+                  <button
+                    onClick={() => requestAccess(d)}
+                    className="rounded-md bg-brand px-2.5 py-1 text-[11px] font-medium text-brand-foreground hover:opacity-90"
+                  >
                     Request Access
                   </button>
                 </div>
