@@ -19,9 +19,16 @@ const statusStyle: Record<string, string> = {
 
 function DatasetsPage() {
   const [q, setQ] = useState("");
+  const [modalOpen, setModalOpen] = useState(false);
+  const [active, setActive] = useState<(typeof datasets)[number] | null>(null);
   const filtered = datasets.filter(
     (d) => d.name.toLowerCase().includes(q.toLowerCase()) || d.tags.some((t) => t.includes(q.toLowerCase()))
   );
+
+  function requestAccess(d: (typeof datasets)[number]) {
+    setActive(d);
+    setModalOpen(true);
+  }
 
   return (
     <>
