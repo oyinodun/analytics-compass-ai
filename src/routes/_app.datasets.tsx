@@ -132,6 +132,7 @@ function DatasetsPage() {
           </div>
         </div>
       </div>
+      <PermissionRequestModal open={modalOpen} onOpenChange={setModalOpen} dataset={active} />
     </>
   );
 }
