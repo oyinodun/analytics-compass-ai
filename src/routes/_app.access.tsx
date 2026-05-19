@@ -18,6 +18,7 @@ const statusMeta: Record<string, { icon: typeof CheckCircle2; cls: string }> = {
 };
 
 function AccessPage() {
+  const [open, setOpen] = useState(false);
   const counts = {
     pending: accessRequests.filter((r) => r.status.includes("Pending") || r.status.includes("Review")).length,
     approved: accessRequests.filter((r) => r.status === "Approved").length,
