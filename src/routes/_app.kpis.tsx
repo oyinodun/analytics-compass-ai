@@ -41,7 +41,7 @@ function KpiPage() {
                 <button
                   key={k.name}
                   onClick={() => setActive(k)}
-                  className={`flex w-full items-center justify-between border-b border-border p-4 text-left transition last:border-b-0 hover:bg-white/5 ${
+                  className={`flex w-full items-center justify-between border-b border-border p-4 text-left transition last:border-b-0 hover:bg-foreground/5 ${
                     active.name === k.name ? "bg-brand/5" : ""
                   }`}
                 >

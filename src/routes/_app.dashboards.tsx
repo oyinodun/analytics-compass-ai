@@ -20,7 +20,7 @@ function DashboardStudio() {
             <p className="mt-1 text-sm text-muted-foreground">Build or generate enterprise dashboards in seconds.</p>
           </div>
           <div className="flex gap-2">
-            <button className="inline-flex items-center gap-2 rounded-lg border border-border px-3 py-2 text-xs hover:bg-white/5">
+            <button className="inline-flex items-center gap-2 rounded-lg border border-border px-3 py-2 text-xs hover:bg-foreground/5">
               <Plus className="size-4" /> Blank Dashboard
             </button>
             <button className="inline-flex items-center gap-2 rounded-lg bg-brand px-3 py-2 text-xs font-medium text-brand-foreground shadow-lg shadow-brand/20 hover:opacity-90">
@@ -40,8 +40,8 @@ function DashboardStudio() {
               <p className="text-[11px] text-muted-foreground">Owner: SRE Ops · 9 widgets · refreshed 15m ago</p>
             </div>
             <div className="flex gap-2">
-              <button className="rounded-md border border-border p-2 hover:bg-white/5"><Share2 className="size-4" /></button>
-              <button className="rounded-md border border-border p-2 hover:bg-white/5"><Download className="size-4" /></button>
+              <button className="rounded-md border border-border p-2 hover:bg-foreground/5"><Share2 className="size-4" /></button>
+              <button className="rounded-md border border-border p-2 hover:bg-foreground/5"><Download className="size-4" /></button>
             </div>
           </div>
 

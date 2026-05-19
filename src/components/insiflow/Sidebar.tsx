@@ -62,7 +62,7 @@ export function Sidebar() {
                           "group flex items-center gap-3 rounded-md px-3 py-2 text-sm transition-colors",
                           active
                             ? "border border-brand/20 bg-brand/10 text-brand"
-                            : "border border-transparent text-foreground/80 hover:bg-white/5 hover:text-foreground",
+                            : "border border-transparent text-foreground/80 hover:bg-foreground/5 hover:text-foreground",
                         ].join(" ")}
                       >
                         <Icon className="size-4 opacity-80" />

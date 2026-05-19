@@ -50,7 +50,7 @@ function AccessPage() {
               const m = statusMeta[r.status];
               const Icon = m.icon;
               return (
-                <div key={r.id} className="grid grid-cols-12 items-center gap-4 p-5 transition hover:bg-white/5">
+                <div key={r.id} className="grid grid-cols-12 items-center gap-4 p-5 transition hover:bg-foreground/5">
                   <div className="col-span-12 md:col-span-4">
                     <div className="flex items-center gap-2 text-sm font-medium">{r.dataset}</div>
                     <div className="mt-1 text-[11px] text-muted-foreground">{r.id} · {r.submitted}</div>
