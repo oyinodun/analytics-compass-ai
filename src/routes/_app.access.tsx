@@ -118,6 +118,7 @@ function AccessPage() {
           </div>
         </div>
       </div>
+      <PermissionRequestModal open={open} onOpenChange={setOpen} dataset={null} />
     </>
   );
 }
