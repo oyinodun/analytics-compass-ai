@@ -68,11 +68,11 @@ export const sparkline = (seed = 1, n = 24) => {
 };
 
 export const regionFailures = [
-  { region: "US-East", value: 60 },
-  { region: "EU-West", value: 95 },
-  { region: "AP-South", value: 40 },
-  { region: "SA-East", value: 20 },
-  { region: "EU-Central", value: 72 },
+  { label: "US-East", value: 60 },
+  { label: "EU-West", value: 95 },
+  { label: "AP-South", value: 40 },
+  { label: "SA-East", value: 20 },
+  { label: "EU-Central", value: 72 },
 ];
 
 export const promptSuggestions = [

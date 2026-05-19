@@ -10,32 +10,128 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as AppRouteImport } from './routes/_app'
+import { Route as AppIndexRouteImport } from './routes/_app.index'
+import { Route as AppSettingsRouteImport } from './routes/_app.settings'
+import { Route as AppKpisRouteImport } from './routes/_app.kpis'
+import { Route as AppInsightsRouteImport } from './routes/_app.insights'
+import { Route as AppDatasetsRouteImport } from './routes/_app.datasets'
+import { Route as AppDashboardsRouteImport } from './routes/_app.dashboards'
+import { Route as AppAssistantRouteImport } from './routes/_app.assistant'
+import { Route as AppAccessRouteImport } from './routes/_app.access'
 
 const AppRoute = AppRouteImport.update({
   id: '/_app',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AppIndexRoute = AppIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppSettingsRoute = AppSettingsRouteImport.update({
+  id: '/settings',
+  path: '/settings',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppKpisRoute = AppKpisRouteImport.update({
+  id: '/kpis',
+  path: '/kpis',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppInsightsRoute = AppInsightsRouteImport.update({
+  id: '/insights',
+  path: '/insights',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppDatasetsRoute = AppDatasetsRouteImport.update({
+  id: '/datasets',
+  path: '/datasets',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppDashboardsRoute = AppDashboardsRouteImport.update({
+  id: '/dashboards',
+  path: '/dashboards',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppAssistantRoute = AppAssistantRouteImport.update({
+  id: '/assistant',
+  path: '/assistant',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppAccessRoute = AppAccessRouteImport.update({
+  id: '/access',
+  path: '/access',
+  getParentRoute: () => AppRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
-  '/': typeof AppRoute
+  '/': typeof AppIndexRoute
+  '/access': typeof AppAccessRoute
+  '/assistant': typeof AppAssistantRoute
+  '/dashboards': typeof AppDashboardsRoute
+  '/datasets': typeof AppDatasetsRoute
+  '/insights': typeof AppInsightsRoute
+  '/kpis': typeof AppKpisRoute
+  '/settings': typeof AppSettingsRoute
 }
 export interface FileRoutesByTo {
-  '/': typeof AppRoute
+  '/access': typeof AppAccessRoute
+  '/assistant': typeof AppAssistantRoute
+  '/dashboards': typeof AppDashboardsRoute
+  '/datasets': typeof AppDatasetsRoute
+  '/insights': typeof AppInsightsRoute
+  '/kpis': typeof AppKpisRoute
+  '/settings': typeof AppSettingsRoute
+  '/': typeof AppIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
-  '/_app': typeof AppRoute
+  '/_app': typeof AppRouteWithChildren
+  '/_app/access': typeof AppAccessRoute
+  '/_app/assistant': typeof AppAssistantRoute
+  '/_app/dashboards': typeof AppDashboardsRoute
+  '/_app/datasets': typeof AppDatasetsRoute
+  '/_app/insights': typeof AppInsightsRoute
+  '/_app/kpis': typeof AppKpisRoute
+  '/_app/settings': typeof AppSettingsRoute
+  '/_app/': typeof AppIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/access'
+    | '/assistant'
+    | '/dashboards'
+    | '/datasets'
+    | '/insights'
+    | '/kpis'
+    | '/settings'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/_app'
+  to:
+    | '/access'
+    | '/assistant'
+    | '/dashboards'
+    | '/datasets'
+    | '/insights'
+    | '/kpis'
+    | '/settings'
+    | '/'
+  id:
+    | '__root__'
+    | '/_app'
+    | '/_app/access'
+    | '/_app/assistant'
+    | '/_app/dashboards'
+    | '/_app/datasets'
+    | '/_app/insights'
+    | '/_app/kpis'
+    | '/_app/settings'
+    | '/_app/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
-  AppRoute: typeof AppRoute
+  AppRoute: typeof AppRouteWithChildren
 }
 
 declare module '@tanstack/react-router' {
@@ -47,22 +143,92 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/_app/': {
+      id: '/_app/'
+      path: '/'
+      fullPath: '/'
+      preLoaderRoute: typeof AppIndexRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/_app/settings': {
+      id: '/_app/settings'
+      path: '/settings'
+      fullPath: '/settings'
+      preLoaderRoute: typeof AppSettingsRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/_app/kpis': {
+      id: '/_app/kpis'
+      path: '/kpis'
+      fullPath: '/kpis'
+      preLoaderRoute: typeof AppKpisRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/_app/insights': {
+      id: '/_app/insights'
+      path: '/insights'
+      fullPath: '/insights'
+      preLoaderRoute: typeof AppInsightsRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/_app/datasets': {
+      id: '/_app/datasets'
+      path: '/datasets'
+      fullPath: '/datasets'
+      preLoaderRoute: typeof AppDatasetsRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/_app/dashboards': {
+      id: '/_app/dashboards'
+      path: '/dashboards'
+      fullPath: '/dashboards'
+      preLoaderRoute: typeof AppDashboardsRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/_app/assistant': {
+      id: '/_app/assistant'
+      path: '/assistant'
+      fullPath: '/assistant'
+      preLoaderRoute: typeof AppAssistantRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/_app/access': {
+      id: '/_app/access'
+      path: '/access'
+      fullPath: '/access'
+      preLoaderRoute: typeof AppAccessRouteImport
+      parentRoute: typeof AppRoute
+    }
   }
 }
 
+interface AppRouteChildren {
+  AppAccessRoute: typeof AppAccessRoute
+  AppAssistantRoute: typeof AppAssistantRoute
+  AppDashboardsRoute: typeof AppDashboardsRoute
+  AppDatasetsRoute: typeof AppDatasetsRoute
+  AppInsightsRoute: typeof AppInsightsRoute
+  AppKpisRoute: typeof AppKpisRoute
+  AppSettingsRoute: typeof AppSettingsRoute
+  AppIndexRoute: typeof AppIndexRoute
+}
+
+const AppRouteChildren: AppRouteChildren = {
+  AppAccessRoute: AppAccessRoute,
+  AppAssistantRoute: AppAssistantRoute,
+  AppDashboardsRoute: AppDashboardsRoute,
+  AppDatasetsRoute: AppDatasetsRoute,
+  AppInsightsRoute: AppInsightsRoute,
+  AppKpisRoute: AppKpisRoute,
+  AppSettingsRoute: AppSettingsRoute,
+  AppIndexRoute: AppIndexRoute,
+}
+
+const AppRouteWithChildren = AppRoute._addFileChildren(AppRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
-  AppRoute: AppRoute,
+  AppRoute: AppRouteWithChildren,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}
