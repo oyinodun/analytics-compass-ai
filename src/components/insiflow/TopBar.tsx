@@ -32,6 +32,7 @@ export function TopBar({ crumbs }: { crumbs: string[] }) {
           <span className="size-2 animate-pulse rounded-full bg-success" />
           <span className="text-xs font-medium text-muted-foreground">System Healthy</span>
         </div>
+        <ThemeToggle />
         <button className="relative rounded-md p-2 text-muted-foreground hover:bg-foreground/5 hover:text-foreground">
           <Bell className="size-4" />
           <span className="absolute right-1.5 top-1.5 size-1.5 rounded-full bg-danger" />
