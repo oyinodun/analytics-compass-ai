@@ -1,5 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { useState } from "react";
 import { TopBar } from "@/components/insiflow/TopBar";
+import { PermissionRequestModal } from "@/components/insiflow/PermissionRequestModal";
 import { accessRequests } from "@/lib/mock-data";
 import { CheckCircle2, Clock, XCircle, ShieldCheck, ArrowRight } from "lucide-react";
 
