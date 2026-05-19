@@ -1,4 +1,5 @@
 import { Bell, Search, Command } from "lucide-react";
+import { ThemeToggle } from "./ThemeToggle";
 
 export function TopBar({ crumbs }: { crumbs: string[] }) {
   return (
