@@ -1,8 +1,9 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { TopBar } from "@/components/insiflow/TopBar";
 import { PermissionRequestModal } from "@/components/insiflow/PermissionRequestModal";
-import { datasets } from "@/lib/mock-data";
+import { searchDatasets } from "@/lib/backend";
+import type { DatasetRecord } from "@/lib/database";
 import { Search, Database, ShieldCheck, Clock, Tag, Sparkles } from "lucide-react";
 
 export const Route = createFileRoute("/_app/datasets")({
@@ -20,12 +21,16 @@ const statusStyle: Record<string, string> = {
 function DatasetsPage() {
   const [q, setQ] = useState("");
   const [modalOpen, setModalOpen] = useState(false);
-  const [active, setActive] = useState<(typeof datasets)[number] | null>(null);
-  const filtered = datasets.filter(
-    (d) => d.name.toLowerCase().includes(q.toLowerCase()) || d.tags.some((t) => t.includes(q.toLowerCase()))
-  );
+  const [active, setActive] = useState<DatasetRecord | null>(null);
+  const [datasets, setDatasets] = useState<DatasetRecord[]>([]);
 
-  function requestAccess(d: (typeof datasets)[number]) {
+  useEffect(() => {
+    searchDatasets(q).then(setDatasets);
+  }, [q]);
+
+  const filtered = datasets;
+
+  function requestAccess(d: DatasetRecord) {
     setActive(d);
     setModalOpen(true);
   }
