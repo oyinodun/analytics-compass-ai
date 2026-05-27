@@ -2,10 +2,11 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useState, useRef, useEffect } from "react";
 import { TopBar } from "@/components/insiflow/TopBar";
 import { BarChart } from "@/components/insiflow/Charts";
-import { promptSuggestions, regionFailures } from "@/lib/mock-data";
+import { getAssistantBootstrap } from "@/lib/backend";
 import { Sparkles, Send, Code2, Bookmark, Download, ChevronDown } from "lucide-react";
 
 export const Route = createFileRoute("/_app/assistant")({
+  loader: () => getAssistantBootstrap(),
   head: () => ({ meta: [{ title: "AI Query Assistant — InsiFlow AI" }] }),
   component: AssistantPage,
 });
@@ -33,6 +34,7 @@ ORDER  BY failures DESC;`,
 ];
 
 function AssistantPage() {
+  const { promptSuggestions, regionFailures } = Route.useLoaderData();
   const [messages, setMessages] = useState<Msg[]>(seedConversation);
   const [input, setInput] = useState("");
   const [thinking, setThinking] = useState(false);

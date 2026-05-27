@@ -1,10 +1,11 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { TopBar } from "@/components/insiflow/TopBar";
 import { Sparkline, LineChart, Donut } from "@/components/insiflow/Charts";
-import { kpis, insights, governanceFeed, dashboards, datasets, promptSuggestions } from "@/lib/mock-data";
+import { getHomeDashboardData } from "@/lib/backend";
 import { ArrowRight, Sparkles, TrendingUp, AlertTriangle, CheckCircle2, Clock } from "lucide-react";
 
 export const Route = createFileRoute("/_app/")({
+  loader: () => getHomeDashboardData(),
   head: () => ({
     meta: [
       { title: "Home — InsiFlow AI" },
@@ -23,6 +24,7 @@ const toneClasses: Record<string, string> = {
 };
 
 function HomePage() {
+  const { kpis, insights, governanceFeed, dashboards, datasets, promptSuggestions } = Route.useLoaderData();
   return (
     <>
       <TopBar crumbs={["Workspace", "Home"]} />
